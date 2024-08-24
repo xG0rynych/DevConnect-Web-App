@@ -1,0 +1,7 @@
+﻿@model DevConnect.Models.Question;
+<link rel="stylesheet" href="~/css/articleQuestionPartial_styles.css" />
+<div class="model-card mb-3 p-3" onclick="location.href='@Url.Action("Index","Question",Model)';">
+    <p class="model-content">@Model.Author.Username</p>
+    <p class="model-content">@Model.Title</p>
+    <p class="model-date">@Model.CreatedAt</p>
+</div>

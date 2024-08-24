@@ -1,0 +1,25 @@
+﻿@model DevConnect.ViewModels.UserIndexViewModel;
+<div class="container p-5">
+    <div class="row">
+        @{
+            if(Model.Articles!=null && Model.Articles.Any()==true)
+            {
+                foreach (var article in Model.Articles)
+                {
+                    <div class="col-12">
+                        @await Html.PartialAsync("_ArticlePartialView", article)
+                    </div>
+                }
+            }
+            if(Model.Questions!=null && Model.Questions.Any()==true)
+            {
+                foreach (var question in Model.Questions)
+                {
+                    <div class="col-12">
+                        @await Html.PartialAsync("_QuestionPartialView", question)
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>

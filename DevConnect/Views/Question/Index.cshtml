@@ -1,0 +1,36 @@
+﻿@using DevConnect.Models
+@using DevConnect.ViewModels
+@model DevConnect.ViewModels.QuestionCommentsViewModel;
+<link rel="stylesheet" href="~/css/ArticleQuestionContent.css" />
+<div class="container-fluid p-5">
+    <div class="content-data mb-3">
+        <h2 class="title">@Model.CurrentQuestion.Title</h2>
+        <p>@Model.CurrentQuestion.Content</p>
+        <a asp-action="Profile" asp-controller="User" asp-route-email="@Model.CurrentQuestion.Author.Email">@Model.CurrentQuestion.Author.Username</a><br />
+        @if (ViewBag.Delete != null && ViewBag.Delete == true)
+        {
+            <a asp-action="DeleteQuestion" asp-route-id="@Model.CurrentQuestion.Id">Delete question</a>
+        }
+        <p>@Model.CurrentQuestion.CreatedAt</p>
+    </div>
+    @await Html.PartialAsync("_CommentCreatePartialView", new CommentCreationViewModel { QuestionId = Model.CurrentQuestion.Id, CurrentComment = new Comment() })
+    <hr />
+    @if (Model.Comments != null && Model.Comments.Any() == true)
+    {
+        foreach (var comment in Model.Comments)
+        {
+            <div class="mb-3">
+                <a asp-controller="User" asp-action="Profile" asp-route-email="@comment.Author.Email"><h5>@comment.Author.Username</h5></a>
+                <p>@comment.Content</p>
+                <p>@comment.CreatedAt</p>
+            </div>
+            <hr />
+        }
+    }
+    else
+    {
+        <div class="">
+            No comments
+        </div>
+    }
+</div>

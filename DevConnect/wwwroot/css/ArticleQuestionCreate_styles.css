@@ -1,0 +1,127 @@
+﻿.container-fluid {
+    height: 75vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+    border-radius: 20px;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+textarea {
+    height:200px;
+    width:800px;
+    padding: 0px 8px;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 24px;
+    background-color: #343434;
+    color: #94a3b8;
+    font-size: 14px;
+    font-family: "Open Sans";
+    outline: none;
+    resize:none;
+}
+
+.my-control {
+    height: 42px;
+    width: 500px;
+    padding: 5px;
+    background-color: #343434;
+    border: 1px solid #bebebe;
+    box-sizing: border-box;
+    border-radius: 24px;
+    color: #94a3b8;
+    font-size: 14px;
+    font-family: "Open Sans";
+    line-height: 42px;
+    outline: none;
+}
+
+label {
+    color: #bebebe;
+    font-size: 14px;
+    font-family: "Open Sans";
+    line-height: 20px;
+}
+
+.my-submit {
+    margin-top: 10px;
+    cursor: pointer;
+    width: 300px;
+    height: 48px;
+    padding: 0px 8px;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 24px;
+    background-color: #a9a9a9;
+    color: #161616;
+    font-size: 16px;
+    font-family: "Open Sans";
+    font-weight: 600;
+    line-height: 24px;
+    outline: none;
+}
+
+@media (max-width:830px) {
+    .my-control {
+        width: 400px;
+    }
+    textarea{
+        width:600px;
+    }
+}
+@media (max-width:670px) {
+    .my-control {
+        width: 400px;
+    }
+
+    textarea {
+        width: 400px;
+    }
+}
+@media (max-width:460px) {
+    .my-submit{
+        width:200px;
+    }
+    .my-control {
+        width: 250px;
+    }
+
+    textarea {
+        width: 250px;
+    }
+}
+
+@media(max-height:550px)
+{
+    .form-container{
+        height:250px;
+    }
+    .my-control{
+        height: 30px;
+    }
+    .my-submit{
+        height:30px;
+    }
+    textarea{
+        height:70px;
+    }
+}

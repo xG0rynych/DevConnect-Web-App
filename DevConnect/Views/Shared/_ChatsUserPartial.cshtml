@@ -1,0 +1,26 @@
+﻿@model DevConnect.ViewModels.ChatsUserViewModel;
+<link rel="stylesheet" href="~/css/ChatsUser_styles.css" />
+@{
+    if (Model != null && Model.ChatsId != null && Model.Users != null)
+    {
+        var count = Model.ChatsId.Count;
+        for (int i = 0; i < count; i++)
+        {
+            <a class="chat-card mb-3" asp-controller="Chat" asp-action="Index" asp-route-id="@Model.ChatsId[i]">
+                <div>
+                    <p>@Model.Users[i]</p><br />
+                    @if (i < Model.LastMessage?.Count && Model.LastMessage[i] != null)
+                    {
+                        <p>@Model.LastMessage[i]</p>
+
+                        <br />
+                        @if (i < Model.SendAt?.Count)
+                        {
+                            <p class="text-start">@Model.SendAt[i]</p>
+                        }
+                    }
+                </div>
+            </a>
+        }
+    }
+}

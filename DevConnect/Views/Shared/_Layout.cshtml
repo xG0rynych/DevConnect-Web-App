@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevConnect</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DevConnect.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-light">
+                <div class="navbar-brand ps-2 pe-2">
+                    <a asp-controller="User" asp-action="Index">
+                        <img src="~/images/icon.svg" height="24" width="24" alt="brand" />
+                        <img src="~/images/text-brand.png" alt="FirmName" />
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="" role="button">
+                        <i class="fas fa-bars" style="color:white"></i>
+                    </span>
+                </button>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="navbar-collapse collapse d-dm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1 ps-4 pe-4 pt-2 pb-2">
+                            <li class="nav-item">
+                                <a asp-controller="User" asp-action="Profile" asp-route-email="@User.Identity.Name">Profile</a>
+                            </li>&nbsp;&nbsp;
+                            <li class="nav-item">
+                                <a asp-controller="Article" asp-action="CreateArticle">Write article</a>
+                            </li>&nbsp;&nbsp;
+                            <li class="nav-item">
+                                <a asp-controller="Question" asp-action="CreateQuestion">Ask a question</a>
+                            </li>&nbsp;&nbsp;
+                            <li class="nav-item">
+                                <a asp-controller="Search" asp-action="Index">Search</a>
+                            </li>&nbsp;&nbsp;
+                            <li class="nav-item">
+                                <a asp-controller="User" asp-action="Logout">Logout</a>
+                            </li>&nbsp;&nbsp;
+                            @if (User.IsInRole("admin"))
+                            {
+                                <li class="nav-item">
+                                    <a asp-controller="Admin" asp-action="Info">Admin</a>
+                                </li>
+                            }
+                            &nbsp;&nbsp;
+                        </ul>
+                    </div>
+                }
+            </nav>
+        </header>
+        <main role="main" class="text-light content">
+            @RenderBody()
+        </main>
+        <footer class="footer text-muted">
+            <div class="container">
+                <a asp-controller="Home" asp-action="AboutMe">About me</a>
+            </div>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

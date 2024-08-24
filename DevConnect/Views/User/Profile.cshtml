@@ -1,0 +1,79 @@
+﻿@model DevConnect.ViewModels.ProfileViewModel;
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-lg-2 col-md-4 col-sm-12">
+            @{
+                if(Model.CurrentUser.ProfilePicture==null)
+                {
+                    <img src="~/images/default-avatar.png" alt="avatar" height="150" width="150"/>
+                }
+                else
+                {
+                    <img src="@Model.CurrentUser.ProfilePicture" alt="avatar" height="150" width="150"/>
+                }
+            }
+            <br />
+            @if(ViewBag.Update!=null && ViewBag.Update==true)
+            {
+                <a class="" asp-action="Update" asp-route-id="@Model.CurrentUser.Id">Update profile</a>
+            }
+        </div>
+        <div class="col-lg-10 col-md-8 col-sm-12">
+            <h3>@Model.CurrentUser.Username</h3>
+            <p>
+                Bio:<br />
+                @Model.CurrentUser.Bio<br /><br />
+                Skills:<br />
+                @Model.CurrentUser.Skills<br /><br />
+                Registered: <br />
+                @Model.CurrentUser.CreatedAt
+            </p>
+        </div>
+    </div>
+    @if (ViewBag.Chat != null && ViewBag.Chat == true)
+    {
+        <div class="row pe-5 ps-5 pt-2 pb-2">
+            <hr />
+            <div class="mb-3">
+                <h3 class="text-center mb-2">Chats</h3>
+            </div>
+            @await Html.PartialAsync("_ChatsUserPartial", (DevConnect.ViewModels.ChatsUserViewModel)ViewBag.Chats)
+            <hr />
+        </div>
+        <div class="row pe-5 ps-5 pt-2 pb-2 mb-3">
+            <div class="mb-3">
+                <h3 class="text-center">Create new chat</h3>
+            </div>
+            <div class="mb-3">
+                @await Html.PartialAsync("_AddChatPartial")
+            </div>
+            <hr />
+        </div>
+    }
+    <div class="row">
+        <div class="col-12">
+            @{
+                var articles = Model.Articles;
+                var questions = Model.Questions;
+                if((articles==null || articles.Any()==false) && (questions==null || questions.Any()==false))
+                {
+                    <h2>No recent activities</h2>
+                }
+                if(articles!=null && articles.Any()==true)
+                {
+                    foreach (var article in articles)
+                    {
+                        @await Html.PartialAsync("_ArticlePartialView", article);
+                    }
+                }
+                if(questions!=null && questions.Any()==true)
+                {
+                    foreach (var question in questions)
+                    {
+                        @await Html.PartialAsync("_QuestionPartialView", question);
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>

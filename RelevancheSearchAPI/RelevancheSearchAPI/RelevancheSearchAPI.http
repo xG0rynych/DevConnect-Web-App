@@ -1,0 +1,6 @@
+@RelevancheSearchAPI_HostAddress = http://localhost:5164
+
+GET {{RelevancheSearchAPI_HostAddress}}/search/
+Accept: application/json
+
+###

@@ -1,0 +1,12 @@
+﻿@model DevConnect.Models.Message;
+@{
+    int chatid = Model.ChatId;
+    int toUserId = Model.ToUserId;
+}
+<link rel="stylesheet" href="~/css/AddMessage_styles.css"/>
+<form method="post" asp-controller="Chat" asp-action="WriteMessage">
+    <input class="my-control" placeholder="Write message..." type="text" asp-for="@Model.Content"/>
+    <input class="my-control" type="hidden" asp-for="@Model.ChatId" value="@chatid"/>
+    <input class="my-control" type="hidden" asp-for="@Model.ToUserId" value="@toUserId" />
+    <input class="my-submit" type="submit" value="Send"/>
+</form>

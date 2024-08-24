@@ -1,0 +1,36 @@
+﻿.text-input {
+    width: 300px;
+    height: 36px;
+    padding: 0px 8px;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 24px;
+    background-color: #343434;
+    color: #94a3b8;
+    font-size: 14px;
+    font-family: "Open Sans";
+    line-height: 36px;
+    outline: none;
+}
+
+.col-options {
+    border-right:1px solid #1e1e1e;
+}
+
+.my-submit {
+    margin-top: 20px;
+    cursor: pointer;
+    width: 300px;
+    height: 40px;
+    padding: 0px 8px;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 24px;
+    background-color: #a9a9a9;
+    color: #161616;
+    font-size: 16px;
+    font-family: "Open Sans";
+    font-weight: 600;
+    line-height: 24px;
+    outline: none;
+}

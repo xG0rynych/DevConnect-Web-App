@@ -1,0 +1,60 @@
+﻿@using DevConnect.Models;
+@using DevConnect.Models.Enums;
+@model DevConnect.ViewModels.SearchViewModel;
+<link rel="stylesheet" href="~/css/SearchStyles.css"/>
+<div class="container">
+    <form asp-action="Search" method="get">
+        <div class="row mt-2">
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-3 col-options">
+                <h4>Filters</h4>
+                <h6>Type</h6>
+                <div class="form-check">
+                    <input class="form-check-input" name="type" type="radio" value="@ModelTypeEnum.articles" checked />
+                    <label class="form-check-label" for="articles">Articles</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="type" type="radio" value="@ModelTypeEnum.questions" />
+                    <label class="form-check-label" for="questions">Questions</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="type" type="radio"value="@ModelTypeEnum.users" />
+                    <label class="form-check-label" for="users">User</label>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-8">
+                <input type="text" class="text-input" name="query" placeholder="Search..." /><br />
+                <input class="my-submit" type="submit" value="Search"/>
+            </div>
+        </div>
+    </form>
+    <hr />
+    <div class="row mt-3">
+        <div class="col-12">
+            @{
+                if(Model==null)
+                {
+                    <h5>No data</h5>
+                }
+                else if (Model.Type == @ModelTypeEnum.articles)
+                {
+                    foreach (Article article in Model.Articles)
+                    {
+                        @await Html.PartialAsync("_ArticlePartialView",article);
+                    }
+                }
+                else if (Model.Type == @ModelTypeEnum.questions)
+                {
+                    foreach (Question question in Model.Questions)
+                    {
+                        @await Html.PartialAsync("_QuestionPartialView", question)
+                        ;
+                    }
+                }
+                else if (Model.Type == @ModelTypeEnum.users)
+                {
+                    <a asp-controller="User" asp-action="Profile" asp-route-email="@Model.FoundUser.Email">@Model.FoundUser.Username</a>
+                }
+            }
+        </div>
+    </div>
+</div>

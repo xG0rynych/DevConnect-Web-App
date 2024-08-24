@@ -1,0 +1,8 @@
+﻿@model DevConnect.ViewModels.CommentCreationViewModel;
+<link rel="stylesheet" href="~/css/CommentCreation_styles.css"/>
+<form asp-action="AddComment" asp-controller="Comment" method="post">
+    <input asp-for="CurrentComment.Content" class="my-control mb-1" type="text" placeholder="Some comment..."/><br />
+    <input type="hidden" asp-for="CurrentComment.ArticleId" value="@Model.ArticleId"/>
+    <input type="hidden" asp-for="CurrentComment.QuestionId" value="@Model.QuestionId" />
+    <input class="my-submit" type="submit"/>
+</form>

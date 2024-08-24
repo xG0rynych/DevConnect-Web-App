@@ -1,0 +1,42 @@
+﻿.container-fluid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+textarea {
+    height:100px;
+    width: 300px;
+    padding: 5px;
+    background-color: #343434;
+    border: 1px solid #bebebe;
+    box-sizing: border-box;
+    border-radius: 24px;
+    color: #94a3b8;
+    font-size: 14px;
+    font-family: "Open Sans";
+    outline: none;
+}
+
+.submit {
+    height: 42px;
+    width: 300px;
+    padding: 5px;
+    background-color: #343434;
+    border: 1px solid #bebebe;
+    box-sizing: border-box;
+    border-radius: 24px;
+    color: #94a3b8;
+    font-size: 14px;
+    font-family: "Open Sans";
+    line-height: 42px;
+    outline: none;
+}
+
+label {
+    color: #bebebe;
+    font-size: 14px;
+    font-family: "Open Sans";
+    line-height: 20px;
+}
