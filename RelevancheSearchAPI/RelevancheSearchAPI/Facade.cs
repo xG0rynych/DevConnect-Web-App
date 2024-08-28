@@ -178,7 +178,7 @@ namespace RelevancheSearchAPI
             {
                 float[] vecB = JsonSerializer.Deserialize<float[]>(question.Vector)!;
                 double cossim = CosineSimilarity(vecA, vecB);
-                if (cossim >= 0.70)
+                if (cossim >= _minSimilarity)
                     result.Add(question.QuestionId);
             }
             return result;
