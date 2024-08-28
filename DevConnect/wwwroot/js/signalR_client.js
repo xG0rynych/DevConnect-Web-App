@@ -7,5 +7,16 @@ connection.on("ReceiveUpdate", function (chatId) {
 });
 
 connection.start().catch(function (err) {
-    return console.error(err.toString());
+    console.error(err.toString());
 });
+
+function ScrollToLastMessages() {
+    var element = document.getElementById('last-messages');
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+}
+
+window.onload = function () {
+    ScrollToLastMessages();
+};
